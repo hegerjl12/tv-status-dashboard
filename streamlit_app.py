@@ -15,7 +15,7 @@ spy3m_data = spy3m_db.get('current')
 spy5m_data = spy5m_db.get('current')
 spy15m_data = spy15m_db.get('current')
 spy30m_data = spy30m_db.get('current')
-spy1h_data = spy1h_db.get('curren
+spy1h_data = spy1h_db.get('current')
 
                          
 col1, col2, col3, col4, col5, col6 = st.columns(6)
