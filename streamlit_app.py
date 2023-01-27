@@ -11,9 +11,10 @@ spy30m_db = deta.Base('SPY30m')
 spy1h_db = deta.Base('SPY1h')
 
 spy1m_data = spy1m_db.get('current')
+spy1m_price = spy1m_data['price']
 if spy1m_data['signal'] == 'sell':
-  sp1m_price = "-" + spy1m_data['price']
-  
+  sp1m_price = "-" + spy1m_price
+
 spy3m_data = spy3m_db.get('current')
 spy5m_data = spy5m_db.get('current')
 spy15m_data = spy15m_db.get('current')
