@@ -23,7 +23,7 @@ spy1h_data = spy1h_db.get('current')
                          
 col1, col2, col3, col4, col5, col6 = st.columns(6)
                           
-col1.metric(label='SPY 1m', value=spy1m_data['signal'], delta=spy1m_data['price'])
+col1.metric(label='SPY 1m', value=spy1m_data['signal'], delta=spy1m_price)
 col2.metric(label='SPY 3m', value=spy3m_data['signal'], delta=spy3m_data['price'])
 col3.metric(label='SPY 5m', value=spy5m_data['signal'], delta=spy5m_data['price'])                          
 col4.metric(label='SPY 15m', value=spy15m_data['signal'], delta=spy15m_data['price'])                          
