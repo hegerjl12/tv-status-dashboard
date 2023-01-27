@@ -10,4 +10,4 @@ spy15m_db = deta.Base('SPY15m')
 spy30m_db = deta.Base('SPY30m')
 spy1h_db = deta.Base('SPY1h')
 
-st.metric(spy1m_db.get('current'))
+st.metric(label='SPY 1m', value=spy1m_db.get('current'))
