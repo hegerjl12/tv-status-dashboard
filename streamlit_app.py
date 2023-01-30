@@ -1,5 +1,6 @@
 import streamlit as st
 from deta import Deta
+from streamlit_autorefresh import st_autorefresh
 
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
 
@@ -50,4 +51,6 @@ col2.metric(label='SPY 3m', value=spy3m_data['signal'], delta=spy3m_price)
 col3.metric(label='SPY 5m', value=spy5m_data['signal'], delta=spy5m_price)                          
 col4.metric(label='SPY 15m', value=spy15m_data['signal'], delta=spy15m_price)                          
 col5.metric(label='SPY 30m', value=spy30m_data['signal'], delta=spy30m_price)                          
-col6.metric(label='SPY 1h', value=spy1h_data['signal'], delta=spy1h_price)                          
+col6.metric(label='SPY 1h', value=spy1h_data['signal'], delta=spy1h_price)
+
+count = st_autorefresh(interval=60000, limit=1000, key="fizzbuzzcounter")
