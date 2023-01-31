@@ -1,6 +1,7 @@
 import streamlit as st
 from deta import Deta
 from streamlit_autorefresh import st_autorefresh
+from datetime import datetime
 
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
 
@@ -42,7 +43,10 @@ if spy1h_data['signal'] == 'sell':
   spy1h_price = spy1h_price - 2*spy1h_price
   
 
-
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M")
+st.subheader(dt_string)
+                         
                          
 col1, col2, col3, col4, col5, col6 = st.columns(6)
                           
