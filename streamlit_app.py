@@ -45,7 +45,7 @@ if spy1h_data['signal'] == 'sell':
 
 now = datetime.now()
 diff = timedelta(days=0, hours=-8)
-combined = now - diff
+combined = now + diff
 dt_string = combined.strftime("%d %b %Y - %H:%M")
 st.subheader(dt_string)
                          
