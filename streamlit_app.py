@@ -1,7 +1,7 @@
 import streamlit as st
 from deta import Deta
 from streamlit_autorefresh import st_autorefresh
-from datetime import datetime
+from datetime import datetime, timedelta
 
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
 
