@@ -2,6 +2,7 @@ import streamlit as st
 from deta import Deta
 from streamlit_autorefresh import st_autorefresh
 from datetime import datetime, timedelta
+import yfinance as yf
 
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
 
@@ -12,10 +13,14 @@ spy15m_db = deta.Base('SPY15m')
 spy30m_db = deta.Base('SPY30m')
 spy1h_db = deta.Base('SPY1h')
 
+stock_info = yf.Ticker('SPY').info
+market_price = stock_info['regularMarketPrice']
+
 spy1m_data = spy1m_db.get('current')
 spy1m_price = float(spy1m_data['price'])
 if spy1m_data['signal'] == 'sell':
-  spy1m_price = spy1m_price - 2*spy1m_price
+  #spy1m_price = spy1m_price - 2*spy1m_price
+delta_price = market_price-spy1m_price
   
 spy3m_data = spy3m_db.get('current')
 spy3m_price = float(spy3m_data['price'])
@@ -51,8 +56,10 @@ st.subheader(dt_string)
                          
                          
 col1, col2, col3, col4, col5, col6 = st.columns(6)
-                          
-col1.metric(label='SPY 1m', value=spy1m_data['signal'], delta=spy1m_price)
+
+
+
+col1.metric(label='SPY 1m', value=spy1m_data['signal']+str(spy1m_price), delta=delta_price)
 col2.metric(label='SPY 3m', value=spy3m_data['signal'], delta=spy3m_price)
 col3.metric(label='SPY 5m', value=spy5m_data['signal'], delta=spy5m_price)                          
 col4.metric(label='SPY 15m', value=spy15m_data['signal'], delta=spy15m_price)                          
