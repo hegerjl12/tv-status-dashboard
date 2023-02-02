@@ -13,7 +13,7 @@ spy15m_db = deta.Base('SPY15m')
 spy30m_db = deta.Base('SPY30m')
 spy1h_db = deta.Base('SPY1h')
 
-stock_info = yf.Ticker('SPY').info
+stock_info = yf.Ticker('TSLA').info
 market_price = stock_info['regularMarketPrice']
 
 spy1m_data = spy1m_db.get('current')
