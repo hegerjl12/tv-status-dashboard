@@ -18,7 +18,7 @@ market_price = stock_info['regularMarketPrice']
 
 spy1m_data = spy1m_db.get('current')
 spy1m_price = float(spy1m_data['price'])
-if spy1m_data['signal'] == 'sell':
+#if spy1m_data['signal'] == 'sell':
   #spy1m_price = spy1m_price - 2*spy1m_price
 delta_price = market_price-spy1m_price
   
