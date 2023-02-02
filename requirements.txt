@@ -2,3 +2,4 @@ streamlit
 deta
 streamlit-autorefresh
 datetime
+yfinance
