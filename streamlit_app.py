@@ -20,7 +20,7 @@ spy1m_data = spy1m_db.get('current')
 spy1m_price = float(spy1m_data['price'])
 #if spy1m_data['signal'] == 'sell':
   #spy1m_price = spy1m_price - 2*spy1m_price
-delta_price = market_price-spy1m_price
+delta_price = float(market_price)-spy1m_price
   
 spy3m_data = spy3m_db.get('current')
 spy3m_price = float(spy3m_data['price'])
