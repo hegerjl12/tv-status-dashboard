@@ -2,6 +2,7 @@ import streamlit as st
 from deta import Deta
 from streamlit_autorefresh import st_autorefresh
 from datetime import datetime, timedelta
+import pandas as pd
 
 if "spy1m_signal" not in st.session_state:
   st.session_state.spy1m_signal = ''
