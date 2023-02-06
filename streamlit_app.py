@@ -102,7 +102,7 @@ col6.metric(label='SPY 1h', value=spy1h_signal, delta=round(spy1h_delta_price,2)
 #spy1m_delta_dump = spy1m_delta.fetch()
 #st.write(spy1m_delta_dump.items)
 
-spy1m_delta_df = pd.DataFrame(spy1m_delta_price)
+spy1m_delta_df = pd.DataFrame({'spy1m_delta':[spy1m_delta_price]})
 st.bar_chart(spy1m_delta_price)
 
 count = st_autorefresh(interval=60000, limit=1000, key="fizzbuzzcounter")
