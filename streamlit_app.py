@@ -89,7 +89,7 @@ col1, col2, col3, col4, col5, col6 = st.columns(6)
 
 
 
-col1.metric(label='SPY 1m', value=spy1m_signal, delta=round(spy1m_delta_price,2))
+col1.metric(label='SPY 1m', value=st.session_state.spy1m_signal, delta=round(spy1m_delta_price,2))
 col2.metric(label='SPY 3m', value=spy3m_signal, delta=round(spy3m_delta_price,2))
 col3.metric(label='SPY 5m', value=spy5m_signal, delta=round(spy5m_delta_price,2))                          
 col4.metric(label='SPY 15m', value=spy15m_signal, delta=round(spy15m_delta_price,2))                          
@@ -97,6 +97,6 @@ col5.metric(label='SPY 30m', value=spy30m_signal, delta=round(spy30m_delta_price
 col6.metric(label='SPY 1h', value=spy1h_signal, delta=round(spy1h_delta_price,2))
 
 st.write(st.session_state.spy1m_price_array)
-st.write(spy1m_timestamp)
+st.write(st.session_state.spy1m_timestamp)
 
 count = st_autorefresh(interval=60000, limit=1000, key="fizzbuzzcounter")
