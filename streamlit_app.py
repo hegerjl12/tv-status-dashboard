@@ -3,7 +3,7 @@ from deta import Deta
 from streamlit_autorefresh import st_autorefresh
 from datetime import datetime, timedelta
 
-if spy1m_price_array not in st.session_state:
+if "spy1m_price_array" not in st.session_state:
   st.session_state.spy1m_price_array = []
 
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
