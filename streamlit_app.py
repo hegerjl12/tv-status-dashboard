@@ -80,7 +80,7 @@ col1, col2, col3, col4, col5, col6 = st.columns(6)
 
 
 
-col1.metric(label='SPY 1m', value=st.session_state.spy1m_signal, delta=spy1m_delta_price)
+col1.metric(label='SPY 1m', value=spy1m_signal, delta=spy1m_delta_price)
 col2.metric(label='SPY 3m', value=spy3m_signal, delta=round(spy3m_delta_price,2))
 col3.metric(label='SPY 5m', value=spy5m_signal, delta=round(spy5m_delta_price,2))                          
 col4.metric(label='SPY 15m', value=spy15m_signal, delta=round(spy15m_delta_price,2))                          
