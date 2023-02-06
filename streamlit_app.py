@@ -22,7 +22,7 @@ spy_current_price_db = deta.Base('SPY_PRICE')
 market_price_data = spy_current_price_db.get('current')
 market_price = float(market_price_data['price'])
 
-
+timestamp = datetime.now()
 
 spy1m_data = spy1m_db.get('current')
 spy1m_price = float(spy1m_data['price'])
@@ -30,7 +30,7 @@ spy1m_delta_price = float(market_price)-spy1m_price
 
 if spy1m_data['signal'] != st.session_state.spy1m_signal:
   st.session_state.spy1m_count = 1
-spy1m_delta.put({'key':st.session_state.spy1m_count, 'timestamp':datetime.now(), 'delta':spy1m_delta_price})
+spy1m_delta.put({'key':st.session_state.spy1m_count, 'timestamp':str(timestamp), 'delta':spy1m_delta_price})
 st.session_state.spy1m_count += 1
 
 if spy1m_data['signal'] == 'buy':
