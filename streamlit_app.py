@@ -30,7 +30,7 @@ spy1m_delta_price = round(float(market_price)-spy1m_price,2)
 
 if spy1m_data['signal'] != st.session_state.spy1m_signal:
   st.session_state.spy1m_count = 1
-spy1m_delta.put({'timestamp':str(timestamp), 'delta':spy1m_delta_price}, st.session_state.spy1m_count)
+spy1m_delta.put({'timestamp':str(timestamp), 'delta':spy1m_delta_price}, str(st.session_state.spy1m_count))
 st.session_state.spy1m_count += 1
 
 if spy1m_data['signal'] == 'buy':
