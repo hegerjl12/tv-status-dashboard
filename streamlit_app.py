@@ -98,6 +98,7 @@ col4.metric(label='SPY 15m', value=spy15m_signal, delta=round(spy15m_delta_price
 col5.metric(label='SPY 30m', value=spy30m_signal, delta=round(spy30m_delta_price,2))                          
 col6.metric(label='SPY 1h', value=spy1h_signal, delta=round(spy1h_delta_price,2))
 
-st.write(spy1m_delta.fetch())
+spy1m_delta_dump = spy1m_delta.fetch()
+st.write(spy1m_delta_dump)
 
 count = st_autorefresh(interval=60000, limit=1000, key="fizzbuzzcounter")
