@@ -3,3 +3,4 @@ deta
 streamlit-autorefresh
 datetime
 yfinance
+pandas
