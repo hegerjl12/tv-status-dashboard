@@ -5,6 +5,10 @@ from datetime import datetime, timedelta
 
 if "spy1m_price_array" not in st.session_state:
   st.session_state.spy1m_price_array = []
+if "spy1m_signal" not in st.session_state:
+  st.session_state.spy1m_signal = ''
+if "spy1m_timestamp" not in st.session_state:
+  st.session_state.spy1m_timestamp = ''
 
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
 
@@ -23,13 +27,13 @@ market_price = float(market_price_data['price'])
 
 spy1m_data = spy1m_db.get('current')
 spy1m_price = float(spy1m_data['price'])
-if spy1m_data['signal'] != spy1m_signal:
+if spy1m_data['signal'] != st.session_state.spy1m_signal:
   st.session_state.spy1m_price_array = []
-  spy1m_timestamp = datetime.now()
+  st.session_state.spy1m_timestamp = datetime.now()
 if spy1m_data['signal'] == 'buy':
-  spy1m_signal = '🟢'
+  st.session_state.spy1m_signal = '🟢'
 if spy1m_data['signal'] == 'sell':
-  spy1m_signal = '🔴'
+  st.session_state.spy1m_signal = '🔴'
 spy1m_delta_price = float(market_price)-spy1m_price
 st.session_state.spy1m_price_array.append(spy1m_delta_price)
   
