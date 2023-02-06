@@ -3,6 +3,9 @@ from deta import Deta
 from streamlit_autorefresh import st_autorefresh
 from datetime import datetime, timedelta
 
+if spy1m_price_array not in st.session_state:
+  st.session_state.spy1m_price_array = []
+
 deta = Deta('b0hip04s_DyG5HST9fRrAtbUr425Q9bDNLSaLScv5')
 
 spy1m_db = deta.Base('SPY1m')
@@ -16,13 +19,19 @@ spy_current_price_db = deta.Base('SPY_PRICE')
 market_price_data = spy_current_price_db.get('current')
 market_price = float(market_price_data['price'])
 
+
+
 spy1m_data = spy1m_db.get('current')
 spy1m_price = float(spy1m_data['price'])
+if spy1m_data['signal'] != spy1m_signal:
+  st.session_state.spy1m_price_array = []
+  spy1m_timestamp = datetime.now()
 if spy1m_data['signal'] == 'buy':
   spy1m_signal = '🟢'
 if spy1m_data['signal'] == 'sell':
   spy1m_signal = '🔴'
 spy1m_delta_price = float(market_price)-spy1m_price
+st.session_state.spy1m_price_array.append(spy1m_delta_price)
   
 spy3m_data = spy3m_db.get('current')
 spy3m_price = float(spy3m_data['price'])
@@ -82,5 +91,8 @@ col3.metric(label='SPY 5m', value=spy5m_signal, delta=round(spy5m_delta_price,2)
 col4.metric(label='SPY 15m', value=spy15m_signal, delta=round(spy15m_delta_price,2))                          
 col5.metric(label='SPY 30m', value=spy30m_signal, delta=round(spy30m_delta_price,2))                          
 col6.metric(label='SPY 1h', value=spy1h_signal, delta=round(spy1h_delta_price,2))
+
+st.write(st.session_state.spy1m_price_array)
+st.write(spy1m_timestamp)
 
 count = st_autorefresh(interval=60000, limit=1000, key="fizzbuzzcounter")
